@@ -7,119 +7,178 @@ import {
   Thermometer,
   Hospital,
   HeartPulse,
-  Biohazard,
-  Droplet,
-  Bandage,
   ShieldCheck,
 } from "lucide-react";
 
 const floatingIcons = [
-  { Icon: Stethoscope, top: "12%", left: "8%", color: "text-blue-400/40" },
-  { Icon: Pill, top: "25%", left: "70%", color: "text-pink-400/40" },
-  { Icon: Bandage, top: "45%", left: "15%", color: "text-red-400/40" },
-  { Icon: Thermometer, top: "35%", left: "60%", color: "text-green-400/40" },
-  { Icon: Syringe, top: "18%", left: "40%", color: "text-purple-400/40" },
-  { Icon: HeartPulse, top: "60%", left: "75%", color: "text-rose-400/40" },
-  { Icon: Hospital, top: "55%", left: "30%", color: "text-cyan-400/40" },
-  { Icon: ShieldCheck, top: "68%", left: "10%", color: "text-yellow-400/40" },
-  { Icon: Biohazard, top: "80%", left: "50%", color: "text-lime-400/40" },
-  { Icon: Droplet, top: "72%", left: "80%", color: "text-orange-400/40" },
+  {
+    Icon: Stethoscope,
+    top: "10%",
+    left: "5%",
+    color: "text-[#742690]/10",
+    size: "w-6 h-6",
+  },
+  {
+    Icon: Pill,
+    top: "20%",
+    left: "85%",
+    color: "text-[#209953]/10",
+    size: "w-8 h-8",
+  },
+  {
+    Icon: Thermometer,
+    top: "30%",
+    left: "75%",
+    color: "text-[#946702]/10",
+    size: "w-7 h-7",
+  },
+  {
+    Icon: Syringe,
+    top: "15%",
+    left: "50%",
+    color: "text-[#262669]/10",
+    size: "w-5 h-5",
+  },
+  {
+    Icon: HeartPulse,
+    top: "65%",
+    left: "80%",
+    color: "text-[#515191]/10",
+    size: "w-6 h-6",
+  },
+  {
+    Icon: Hospital,
+    top: "60%",
+    left: "25%",
+    color: "text-[#742690]/10",
+    size: "w-9 h-9",
+  },
+  {
+    Icon: ShieldCheck,
+    top: "70%",
+    left: "15%",
+    color: "text-[#396190]/10",
+    size: "w-5 h-5",
+  },
 ];
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex justify-center items-center relative overflow-hidden px-4 -mt-[1px] bg-[linear-gradient(135deg,_#0b1f23_25%,_black_100%)]">
-      {/* Optional animated overlay glow */}
-      <motion.div
-        initial={{ opacity: 0.2, scale: 1 }}
-        animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.05, 1] }}
-        transition={{ duration: 10, repeat: Infinity }}
-        className="absolute right-0 bottom-0 w-[80%] h-[80%] bg-black/30 blur-2xl rounded-full pointer-events-none"
-      />
+    <section className="min-h-screen flex justify-center items-center relative overflow-hidden px-4 bg-white">
+      {/* 🔹 Background Video with Blur */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0 blur-[2px]"
+      >
+        <source src="/landing-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* Floating Medical Icons */}
-      {floatingIcons.map(({ Icon, top, left, color }, index) => (
-        <motion.span
+      {/* 🔹 Subtle floating icons */}
+      {floatingIcons.map(({ Icon, top, left, color, size }, index) => (
+        <motion.div
           key={index}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: [0, -10, 0], opacity: 0.5 }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{ y: [0, -10, 0], opacity: [0, 0.1, 0] }}
           transition={{
-            duration: 6,
-            delay: index * 0.2,
+            duration: 8 + Math.random() * 4,
+            delay: index * 0.3,
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: "reverse",
           }}
-          className={`absolute z-0 select-none ${color}`}
+          className={`absolute z-0 select-none ${color} ${size}`}
           style={{ top, left }}
         >
-          <Icon className="w-6 h-6" />
-        </motion.span>
+          <Icon className="w-full h-full" />
+        </motion.div>
       ))}
 
-      {/* Center Card */}
+      {/* 🔹 Main Content */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-12 max-w-3xl w-full text-center shadow-2xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 max-w-3xl w-full text-center px-6"
       >
         <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-sm uppercase tracking-widest text-blue-400 mb-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-sm uppercase tracking-widest text-[#706296] mb-4 font-medium drop-shadow-md"
         >
-          Smart Pharmacy Search
+          Pharmacy Finder
         </motion.h3>
 
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-4xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent"
+          transition={{ delay: 0.3, duration: 0.7 }}
+          className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight drop-shadow-lg"
         >
-          Find Nearby Medicines <br />
-          <span className="text-blue-400">Faster Than Ever</span>
+          Find <span className="text-[#742690] drop-shadow-md">Medicines</span>{" "}
+          Near You
+          <br /> in{" "}
+          <span className="text-[#1a7a3f] drop-shadow-md">Real-Time</span>
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg text-gray-300 mb-4"
-        >
-          Search medicine availability instantly across local pharmacies with
-          live stock and contact info.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-md text-gray-400 mb-6"
-        >
-          Perfect for emergencies, chronic treatments, and quick access to
-          essential meds nearby.
-        </motion.p>
-
-        <motion.a
-          href="#search"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition"
-        >
-          Check Availability
-        </motion.a>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="text-sm text-gray-500 mt-6"
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="text-lg text-gray-800 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md"
         >
-          Access to medicine starts with information — we make that fast &
-          effortless.
+          Instantly check availability, compare prices, and locate nearby
+          pharmacies with up-to-date stock information.
         </motion.p>
+
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="flex flex-col sm:flex-row justify-center gap-4 mb-10"
+        >
+          <motion.a
+            href="#search"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 bg-[#742690] text-white rounded-md shadow-md hover:shadow-lg transition-all font-medium"
+          >
+            Search Medicines
+          </motion.a>
+          <motion.a
+            href="#pharmacies"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-6 py-3 bg-white border border-[#209953] text-[#1a7a3f] rounded-md hover:bg-[#209953]/10 transition-all font-medium shadow-md"
+          >
+            View Pharmacies
+          </motion.a>
+        </motion.div>
+
+        {/* Bottom Highlights */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-6 text-sm text-gray-800 mt-12 drop-shadow-md"
+        >
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#396190]" />
+            <span>Verified Stores</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <HeartPulse className="w-4 h-4 text-[#515191]" />
+            <span>Emergency Stocks</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Thermometer className="w-4 h-4 text-[#946702]" />
+            <span>Cold Storage</span>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

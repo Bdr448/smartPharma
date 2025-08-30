@@ -8,7 +8,7 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #000000, #2c5364);
+  background: linear-gradient(135deg, #59b1d7, #ffffff, #2c5364);
   color: white;
   margin: 0;
   padding: 0;
@@ -61,6 +61,28 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+/* === Custom Scrollbar Theme (matches blurred navbar) === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05); /* translucent track */
+  backdrop-filter: blur(4px); /* match navbar blur */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3); /* white glassy thumb */
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0); /* spacing via transparent border */
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5); /* brighter on hover */
+}
+
 
 /* Light mode adjustments */
 @media (prefers-color-scheme: light) {
