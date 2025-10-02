@@ -41,9 +41,9 @@ mongoose
   .then(() => {
     console.log("✅ MongoDB connected");
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(` Server running on port ${PORT}`);
       console.log(
-        `📂 Serving images at: http://localhost:${PORT}/uploads/<filename>`
+        ` Serving images at: http://localhost:${PORT}/uploads/<filename>`
       );
     });
   })
